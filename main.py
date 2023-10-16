@@ -23,10 +23,9 @@ if place:
     try:
         filtered_data = get_data(place, forecast_days)
 
-
         if data_to_show == "Temperature":
             # Extracting temperatures
-            temperatures = [dict["main"]["temp"]/10 for dict in filtered_data]    
+            temperatures = [dict["main"]["temp"] for dict in filtered_data]    
             dates = [dict["dt_txt"] for dict in filtered_data]
             figure = px.line(x=dates, y=temperatures, labels={"x": "Date", "y": "Temperature(C°)"})
             st.plotly_chart(figure)
@@ -35,7 +34,6 @@ if place:
             sky_conditions = [dict["weather"][0]["main"] for dict in filtered_data]
             images = {"Clear":"images/clear.png", "Clouds": "images/cloud.png", "Rain": "images/rain.png", "Snow":"images/snow.png"}
             images_paths = [images[sky_condition] for sky_condition in sky_conditions]
-            print(sky_conditions)
             st.image(images_paths, width=115)
     except KeyError:
             st.write("That place does not exist :(")
