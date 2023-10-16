@@ -20,6 +20,6 @@ st.subheader(f"{data_to_show} for the next {str(forecast_days)}"\
 
 data = get_data(place, forecast_days, data_to_show)
 
-figure = px.line(x=d, y=t, labels={"x": "Date", "y": "Temperature(C°)"})
-st.plotly_chart(figure)
+# figure = px.line(x=d, y=t, labels={"x": "Date", "y": "Temperature(C°)"})
+# st.plotly_chart(figure)
 st.session_state
